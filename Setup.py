@@ -1,8 +1,14 @@
+from setuptools import setup, find_packages
+setup(
+    name='Player',
+    packages=find_packages(),
+)
+
 setup(
     name='Vendor',
     version='0.0.1',
     description='Vending machine software',
-    long_description=long_description,
+    long_description='long_description',
     url='https://github.com/LMCMLJ/samnple',
     author='Michael Calvey',
     license='Apache_2.0',
