@@ -17,7 +17,7 @@ class Game:
             """
             Increases food randomly.
 
-            Creates random number, uses input time in calculation of gathered food,
+            Create random number, use input time in calculation of gathered food,
             updates inventory for food quantity. Adds small delay for user to wait.
             foodGathered = total food added to player
             """
@@ -35,12 +35,18 @@ class Game:
             Player.inventory['food'] += foodGathered
 
         def feed(self):
+            """
+
+            """
             return()
 
         def drink(self):
             return()
 
         def fire(self):
+            return()
+
+        def sleep(self):
             return()
 
     class Construction:

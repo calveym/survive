@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d020e07d-4d6f-496c-a890-983ac7679771" name="Default" comment="" />
+    <list default="true" id="d020e07d-4d6f-496c-a890-983ac7679771" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/Scripts.py" afterPath="$PROJECT_DIR$/main/Scripts.py" />
+    </list>
     <ignored path="Survive.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,12 +36,12 @@
       <file leaf-file-name="Scripts.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/Scripts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18134715">
-              <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.44041452">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
                 <element signature="e#77#210#1" expanded="true" />
-                <element signature="e#283#562#1" expanded="true" />
+                <element signature="e#1040#1060#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -352,7 +354,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/main/Scripts.py</url>
+          <line>15</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -371,7 +381,7 @@
           <folding>
             <element signature="e#0#15#0" expanded="true" />
             <element signature="e#77#210#1" expanded="true" />
-            <element signature="e#283#562#1" expanded="true" />
+            <element signature="e#1040#1060#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -428,12 +438,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/Scripts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18134715">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.44041452">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
             <element signature="e#77#210#1" expanded="true" />
-            <element signature="e#283#562#1" expanded="true" />
+            <element signature="e#1040#1060#1" expanded="true" />
           </folding>
         </state>
       </provider>
