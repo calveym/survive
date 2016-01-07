@@ -4,6 +4,8 @@ from main.Scripts import *
 
 
 def main():
+    while True:
+        main.Scripts.play()
     return()
 
 

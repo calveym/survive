@@ -15,7 +15,7 @@ setup(
     classifiers=[
                    'Development Status :: 1 - pre-dev',
                    'Intended Audience :: commercial',
-                   'Topic :: sample :: sample',
+                   'Topic :: Game',
                    'License :: Apache 2.0',
                    'Programming Language :: Python :: 3.x',
     ]

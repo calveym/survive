@@ -8,9 +8,8 @@ class Player:
 
     inventory = {
                 'Money': 0,
-                'Food': 0
+                'Food': 10,
+                'Water': 10
     }
 
-    skills = {
-             'Foraging': 1
-    }
+    skills = {}
