@@ -1,4 +1,5 @@
-a = 1
-b = 0
-b = a
-print(b)
+from main.Scripts import *
+from main.Character import *
+print(Player.inventory)
+Game.Survival.forage(2)
+print(Player.inventory)

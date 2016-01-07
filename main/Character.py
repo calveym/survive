@@ -1,15 +1,15 @@
 class Player:
     stats = {
-             'Health': 100,
-             'Speed': 1,
-             'Intelligence': 1,
-             'Energy': 100
+             'health': 100,
+             'speed': 1,
+             'intelligence': 1,
+             'energy': 100
     }
 
     inventory = {
-                'Money': 0,
-                'Food': 10,
-                'Water': 10
+                'money': 0,
+                'food': 10,
+                'water': 10
     }
 
     skills = {}
