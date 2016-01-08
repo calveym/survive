@@ -1,5 +1,3 @@
-from main.Scripts import *
-from main.Character import *
-print(Player.inventory)
-Game.Survival.forage(2)
-print(Player.inventory)
+from main.scripts import *
+from main.character import *
+Game.Play.setup(1)
