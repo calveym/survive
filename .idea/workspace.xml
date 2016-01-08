@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d020e07d-4d6f-496c-a890-983ac7679771" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/Scripts.py" afterPath="$PROJECT_DIR$/main/Scripts.py" />
-    </list>
+    <list default="true" id="d020e07d-4d6f-496c-a890-983ac7679771" name="Default" comment="" />
     <ignored path="Survive.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +34,7 @@
       <file leaf-file-name="Scripts.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/Scripts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44041452">
+            <state vertical-scroll-proportion="0.46632123">
               <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -438,7 +436,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/Scripts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44041452">
+        <state vertical-scroll-proportion="0.46632123">
           <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
