@@ -7,7 +7,7 @@ class Player:
              'health': 100,
              'speed': 1,
              'intelligence': 1,
-             'energy': 100}
+             }
 
     inventory = {
                  'money': 0,

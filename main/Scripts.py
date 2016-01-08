@@ -3,6 +3,8 @@ import random
 from main.character import Player
 
 
+
+
 class Survival:
 
     def forage(self):
