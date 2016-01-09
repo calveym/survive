@@ -2,7 +2,7 @@ import time
 import random
 from main.character import Player
 
-
+location = 'Pine Forest'
 
 
 class Survival:
@@ -58,7 +58,22 @@ class Ui:
         return()
 
     def printui(self):
+        """
+        Prints out user interface, with all necessary information and interactions.
+        """
+        print("Location: ", location.ljust(28), "|  Time : ", str(Time.time).ljust(15), "Health : ",
+              str(Player.stats['health']).ljust(15), "Water : ", str(Player.inventory['water']).ljust(20), "|")
 
+        print("                                        |  Day  : ", str(Time.day).ljust(15), "Money  : ",
+              str(Player.inventory['money']).ljust(15), "Food  : ", str(Player.inventory['food']).ljust(15), "|")
+
+        print("________________________________________|_________________________________________________"
+              "_____________________________|")
+
+        print("  Event Log:                                                          |                      "
+              "Menu:                     |")
+
+        print("                                                                      |  ", )
         return()
 
 
