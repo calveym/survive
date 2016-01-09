@@ -1,3 +1,5 @@
+import unittest
 from main.scripts import *
 from main.character import *
-Ui.printui(1)
+SUi = Ui()
+SUi.printui()

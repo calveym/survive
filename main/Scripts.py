@@ -12,7 +12,7 @@ class Survival:
         Increases food randomly.
         """
 
-    def feed(self):
+    def eat(self):
         """
 
         """
@@ -53,28 +53,124 @@ class Action:
 
 
 class Ui:
+    """
+    Defines all user interactions. Frontend communicates with backend logic.
+
+    Menu changes based on previous input, restarts at mainmenu.
+    :func inventory: prints inventory on call
+    """
+
+    mainmenu = ['Survival', 'Action', 'Construction', 'Inventory', '?']
+    inventorymenu = []
+    survivalmenu = ['Forage for Food', 'Eat Some Food', 'Take a Drink', 'Light a Fire', 'Return to Main Menu']
+    constructionmenu = ['Build', 'Gather', 'Return to Main Menu', '?', '?']
+    actionmenu = ['Train', 'Explore', 'Signal', 'Interact', 'Return to Main Menu']
+    secretmenu = ['Secret', 'Secret', 'Secret', 'Secret', 'Secret']
+    menu = mainmenu
+    eventlog = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
     def inventory(self):
         return()
 
+    def mainmenuinput(self, userinput):
+        """
+
+        :param userinput: input from printui
+        :return:
+        """
+        try:
+            if Ui.menu == Ui.mainmenu:
+                if userinput == 1:
+                    Ui.menu = Ui.survivalmenu
+                elif userinput == 2:
+                    Ui.menu = Ui.actionmenu
+                elif userinput == 3:
+                    Ui.menu = Ui.constructionmenu
+                elif userinput == 4:
+                    Ui.menu = Ui.inventorymenu
+                elif userinput == 5:
+                    Ui.menu = Ui.secretmenu
+            elif Ui.menu == Ui.survivalmenu:
+                if userinput == 1:
+                    pass
+                elif userinput == 2:
+                    pass
+                elif userinput == 3:
+                    pass
+                elif userinput == 4:
+                    pass
+                elif userinput == 5:
+                    pass
+            elif Ui.menu == Ui.actionmenu:
+                if userinput == 1:
+                    pass
+                elif userinput == 2:
+                    pass
+                elif userinput == 3:
+                    pass
+                elif userinput == 4:
+                    pass
+                elif userinput == 5:
+                    pass
+            elif Ui.menu == Ui.constructionmenu:
+                if userinput == 1:
+                    pass
+                elif userinput == 2:
+                    pass
+                elif userinput == 3:
+                    pass
+                elif userinput == 4:
+                    pass
+                elif userinput == 5:
+                    pass
+            elif Ui.menu == Ui.inventorymenu:
+                if userinput == 1:
+                    pass
+                elif userinput == 2:
+                    pass
+                elif userinput == 3:
+                    pass
+                elif userinput == 4:
+                    pass
+                elif userinput == 5:
+                    pass
+            elif Ui.menu == Ui.secretmenu:
+                if userinput == 1:
+                    pass
+                elif userinput == 2:
+                    pass
+                elif userinput == 3:
+                    pass
+                elif userinput == 4:
+                    pass
+                elif userinput == 5:
+                    pass
+            return Ui.printui(self)
+        except:
+            pass
+
+
     def printui(self):
-        """
-        Prints out user interface, with all necessary information and interactions.
-        """
-        print("Location: ", location.ljust(28), "|  Time : ", str(Time.time).ljust(15), "Health : ",
-              str(Player.stats['health']).ljust(15), "Water : ", str(Player.inventory['water']).ljust(20), "|")
-
-        print("                                        |  Day  : ", str(Time.day).ljust(15), "Money  : ",
-              str(Player.inventory['money']).ljust(15), "Food  : ", str(Player.inventory['food']).ljust(15), "|")
-
-        print("________________________________________|_________________________________________________"
+        """Prints out user interface, with all necessary information and interactions."""
+        print("____________________________________________________________________________________________________"
+              "___________________")
+        print("|Location: ", location.ljust(27), "|  Time : ", str(Time.time).ljust(15), "Health : ",
+              str(Player.stats['health']).ljust(15), "Water : ", str(Player.inventory['water']).ljust(16), "|")
+        print("|                                       |  Day  : ", str(Time.day).ljust(15), "Money  : ",
+              str(Player.inventory['money']).ljust(15), "Food  : ", str(Player.inventory['food']).ljust(16), "|")
+        print("|_______________________________________|_________________________________________________"
               "_____________________________|")
-
-        print("  Event Log:                                                          |                      "
+        print("| Event Log:                                                          |                      "
               "Menu:                     |")
-
-        print("                                                                      |  ", )
-        return()
+        for item in Ui.menu:
+            print("|                                                                     | ",
+                  Ui.menu.index(item) + 1, ":", item.ljust(41), "|")
+        for x in Ui.eventlog:
+            print("| ", Ui.eventlog.index(x), ": ", x.ljust(61), "|                                                |")
+        print("|_____________________________________________________________________|_____________________________"
+              "___________________|\n|")
+        userinput = int(input("|    User Input: "))
+        Ui.mainmenuinput(self, userinput)
 
 
 class Play(object):
