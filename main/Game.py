@@ -1,11 +1,12 @@
 from main.character import Player
 from main.scripts import *
+import setup
 
 
 def main():
     """Main loop"""
     while True:
-        Game.Play.setup()
+        setup.setup()
 
 
 if __name__ == '__main__':

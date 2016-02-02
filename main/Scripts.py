@@ -6,6 +6,7 @@ location = 'Pine Forest'
 
 
 class Survival:
+    """TODO: add base logic"""
 
     def forage(self):
         """
@@ -36,6 +37,9 @@ class Construction:
     def gather(self):
         return()
 
+    def upgrade(self):
+        return()
+
 
 class Action:
 
@@ -63,11 +67,16 @@ class Ui:
     mainmenu = ['Survival', 'Action', 'Construction', 'Inventory', '?']
     inventorymenu = []
     survivalmenu = ['Forage for Food', 'Eat Some Food', 'Take a Drink', 'Light a Fire', 'Return to Main Menu']
-    constructionmenu = ['Build', 'Gather', 'Return to Main Menu', '?', '?']
+    constructionmenu = ['Build', 'Gather', 'Upgrade', 'Return to Main Menu', '?']
     actionmenu = ['Train', 'Explore', 'Signal', 'Interact', 'Return to Main Menu']
     secretmenu = ['Secret', 'Secret', 'Secret', 'Secret', 'Secret']
     menu = mainmenu
     eventlog = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+
+    def addevent(self, text):
+        Ui.eventlog.insert(0, text)
+        del Ui.eventlog[13]
+        return()
 
     def inventory(self):
         return()
@@ -92,37 +101,37 @@ class Ui:
                     Ui.menu = Ui.secretmenu
             elif Ui.menu == Ui.survivalmenu:
                 if userinput == 1:
-                    pass
+                    Survival.forage()
                 elif userinput == 2:
-                    pass
+                    Survival.eat()
                 elif userinput == 3:
-                    pass
+                    Survival.drink()
                 elif userinput == 4:
-                    pass
+                    Survival.fire()
                 elif userinput == 5:
-                    pass
+                    Ui.menu = Ui.mainmenu
             elif Ui.menu == Ui.actionmenu:
                 if userinput == 1:
-                    pass
+                    Action.train()
                 elif userinput == 2:
-                    pass
+                    Action.explore()
                 elif userinput == 3:
-                    pass
+                    Action.signal()
                 elif userinput == 4:
-                    pass
+                    Action.interact()
                 elif userinput == 5:
-                    pass
+                    Ui.menu = Ui.mainmenu
             elif Ui.menu == Ui.constructionmenu:
                 if userinput == 1:
-                    pass
+                    Construction.build()
                 elif userinput == 2:
-                    pass
+                    Construction.gather()
                 elif userinput == 3:
-                    pass
+                    Construction.upgrade()
                 elif userinput == 4:
-                    pass
+                    Ui.menu = Ui.mainmenu
                 elif userinput == 5:
-                    pass
+                    Ui.menu = Ui.secretmenu
             elif Ui.menu == Ui.inventorymenu:
                 if userinput == 1:
                     pass
@@ -221,3 +230,4 @@ class Time:
         return()
 
 
+Ui.printui(1)
