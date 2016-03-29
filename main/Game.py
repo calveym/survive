@@ -1,14 +1,10 @@
-from main.character import Player
-from main.scripts import *
-import setup
-import main.savedstate
+import main
 
 
 def main():
     """Main loop"""
-    main.scripts.init()
     while True:
-        setup.setup()
+        main.scripts.ui.printui()
 
 
 if __name__ == '__main__':

@@ -1,77 +1,87 @@
 import time
 import random
-from main.character import Player
 import main
+from main.character import Player
+import main.savedstate
+import main.locations
 
-location = {'name': '', 'difficulty': 0}
+location = 'Concord'
+difficulty = 2
 
-
-def init():
-    print("Load previous game?(yes/no)")
-    if str(input()) == 'yes':
-        print("Loading game...")
-        main.curstate = main.savedstate
-    else:
-        main.curstate = main.character
 
 class Survival:
     """TODO: add base logic"""
 
-    def forage(self):
+    @staticmethod
+    def forage():
         """
-        Increases food randomly.
+        Increases food
         """
-        Ui.addevent(self, 'You go out in search of food.')
+        ui.addevent('You go out in search of food.')
         time.sleep(1)
-        Ui.printui(self)
-        Ui.addevent('.')
+        ui.printui(False)
+        ui.addevent('.')
         time.sleep(1)
-        chance = random.randint(0, 3) - (int(location['difficulty']))
-        Ui.addevent('Success!')
-    def eat(self):
+        chance = random.randint(0, 5) - (int(difficulty))
+        curstate.Player.inventory['food'] += chance
+        ui.addevent('Success!' + str(chance) + 'food added!')
+
+    @staticmethod
+    def eat():
+        """
+        Reduces food by 1, replenishes 10 health.
+        """
+        ui.addevent('You eat a scrap of food.')
+        curstate.Player.inventory['food'] -= 1
+        time.sleep(1)
+        ui.printui(True)
+
+    @staticmethod
+    def drink():
+        """
+        reduces water by 1, replenishes 5 health
         """
 
-        """
-        Ui.addevent(self, 'You eat a scrap of food.')
-        time.sleep(1)
-        Ui.printui(self)
-
+    @staticmethod
+    def fire():
         return()
 
-    def drink(self):
-        return()
-
-    def fire(self):
-        return()
-
-    def sleep(self):
+    @staticmethod
+    def sleep():
         return()
 
 
 class Construction:
 
-    def build(self):
+    @staticmethod
+    def build():
         return ()
 
-    def gather(self):
+    @staticmethod
+    def gather():
         return()
 
-    def upgrade(self):
+    @staticmethod
+    def upgrade():
         return()
 
 
 class Action:
 
-    def train(self):
+    @staticmethod
+    def train():
         return()
 
-    def explore(self):
+    @staticmethod
+    def explore():
         return()
 
-    def signal(self):
+    @staticmethod
+    def signal():
         return()
 
-    def interact(self):
+    @staticmethod
+    def interact():
         return()
 
 
@@ -81,77 +91,96 @@ class Ui:
 
     Menu changes based on previous input, restarts at mainmenu.
     :func inventory: prints inventory on call
+
     """
 
     mainmenu = ['Survival', 'Action', 'Construction', 'Inventory', '?']
-    inventorymenu = []
+    inventorymenu = ['List Inventory', '', '', '', 'Return to Main Menu']
     survivalmenu = ['Forage for Food', 'Eat Some Food', 'Take a Drink', 'Light a Fire', 'Return to Main Menu']
     constructionmenu = ['Build', 'Gather', 'Upgrade', 'Return to Main Menu', '?']
     actionmenu = ['Train', 'Explore', 'Signal', 'Interact', 'Return to Main Menu']
-    secretmenu = ['Secret', 'Secret', 'Secret', 'Secret', 'Secret']
+    secretmenu = ['Secret', 'Secret', 'Secret', 'Secret', 'Return to Main Menu']
     menu = mainmenu
     eventlog = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-    def addevent(self, text):
-        Ui.eventlog.insert(0, text)
-        del Ui.eventlog[13]
+    @staticmethod
+    def addevent(text):
+        ui.eventlog.insert(0, text)
+        del ui.eventlog[13]
         return()
 
-    def inventory(self):
-        return()
+    @staticmethod
+    def inventory():
+        """Prints each inventory item to the eventlog.
+        """
+        for item in curstate.Player.inventory:
+            ui.addevent(str(curstate.Player.inventory[item]).ljust(6) + " x " + item)
+        ui.printui(True)
 
-    def mainmenuinput(self, userinput):
+    @staticmethod
+    def mainmenuinput(userinput):
         """
 
         :param userinput: input from printui
         :return:
         """
         try:
-            if Ui.menu == Ui.mainmenu:
+            if ui.menu == ui.mainmenu:
                 if userinput == 1:
-                    Ui.menu = Ui.survivalmenu
+                    ui.menu = ui.survivalmenu
                 elif userinput == 2:
-                    Ui.menu = Ui.actionmenu
+                    ui.menu = ui.actionmenu
                 elif userinput == 3:
-                    Ui.menu = Ui.constructionmenu
+                    ui.menu = ui.constructionmenu
                 elif userinput == 4:
-                    Ui.menu = Ui.inventorymenu
+                    ui.menu = ui.inventorymenu
                 elif userinput == 5:
-                    Ui.menu = Ui.secretmenu
-            elif Ui.menu == Ui.survivalmenu:
+                    ui.menu = ui.secretmenu
+            elif ui.menu == ui.survivalmenu:
                 if userinput == 1:
-                    Survival.forage()
+                    survival.forage()
                 elif userinput == 2:
-                    Survival.eat()
+                    survival.eat()
                 elif userinput == 3:
-                    Survival.drink()
+                    survival.drink()
                 elif userinput == 4:
-                    Survival.fire()
+                    survival.fire()
                 elif userinput == 5:
-                    Ui.menu = Ui.mainmenu
-            elif Ui.menu == Ui.actionmenu:
+                    ui.menu = ui.mainmenu
+            elif ui.menu == ui.actionmenu:
                 if userinput == 1:
-                    Action.train()
+                    action.train()
                 elif userinput == 2:
-                    Action.explore()
+                    action.explore()
                 elif userinput == 3:
-                    Action.signal()
+                    action.signal()
                 elif userinput == 4:
-                    Action.interact()
+                    action.interact()
                 elif userinput == 5:
-                    Ui.menu = Ui.mainmenu
-            elif Ui.menu == Ui.constructionmenu:
+                    ui.menu = ui.mainmenu
+            elif ui.menu == ui.constructionmenu:
                 if userinput == 1:
-                    Construction.build()
+                    construction.build()
                 elif userinput == 2:
-                    Construction.gather()
+                    construction.gather()
                 elif userinput == 3:
-                    Construction.upgrade()
+                    construction.upgrade()
                 elif userinput == 4:
-                    Ui.menu = Ui.mainmenu
+                    ui.menu = ui.mainmenu
                 elif userinput == 5:
-                    Ui.menu = Ui.secretmenu
-            elif Ui.menu == Ui.inventorymenu:
+                    ui.menu = ui.secretmenu
+            elif ui.menu == ui.inventorymenu:
+                if userinput == 1:
+                    ui.inventory()
+                elif userinput == 2:
+                    construction.gather()
+                elif userinput == 3:
+                    construction.upgrade()
+                elif userinput == 4:
+                    ui.menu = ui.mainmenu
+                elif userinput == 5:
+                    ui.menu = ui.secretmenu
+            elif ui.menu == ui.secretmenu:
                 if userinput == 1:
                     pass
                 elif userinput == 2:
@@ -161,44 +190,45 @@ class Ui:
                 elif userinput == 4:
                     pass
                 elif userinput == 5:
-                    pass
-            elif Ui.menu == Ui.secretmenu:
-                if userinput == 1:
-                    pass
-                elif userinput == 2:
-                    pass
-                elif userinput == 3:
-                    pass
-                elif userinput == 4:
-                    pass
-                elif userinput == 5:
-                    pass
-            return Ui.printui(self)
-        except:
+                    ui.menu = ui.mainmenu
+            return ui.printui(True)
+        except ValueError:
             pass
 
-
-    def printui(self):
-        """Prints out user interface, with all necessary information and interactions."""
+    @staticmethod
+    def printui(static):
+        """Prints out user interface, with all necessary information and interactions.
+        :param static: whether the interface allows user input. 0=no 1=yes
+        """
         print("____________________________________________________________________________________________________"
               "___________________")
-        print("|Location: ", location['name'].ljust(27), "|  Time : ", str(Time.time).ljust(15), "Health : ",
-              str(Player.stats['health']).ljust(15), "Water : ", str(Player.inventory['water']).ljust(16), "|")
-        print("|                                       |  Day  : ", str(Time.day).ljust(15), "Money  : ",
-              str(Player.inventory['money']).ljust(15), "Food  : ", str(Player.inventory['food']).ljust(16), "|")
+        print("|Location: ", location.ljust(27), "|  Time : ", str(curstate.Player.timeofday).ljust(15), "Health : ",
+              str(curstate.Player.stats['health']).ljust(15), "Rads  : ", str(curstate.Player.stats['rads']).ljust(16),
+              "|")
+        print("|                                       |  Day  : ", str(curstate.Player.day).ljust(15),
+              "Money  : ",
+              str(curstate.Player.inventory['money']).ljust(15), "Food  : ",
+              str(curstate.Player.inventory['food']).ljust(16), "|")
         print("|_______________________________________|_________________________________________________"
               "_____________________________|")
         print("| Event Log:                                                          |                      "
               "Menu:                     |")
-        for item in Ui.menu:
+        for item in ui.menu:
             print("|                                                                     | ",
-                  Ui.menu.index(item) + 1, ":", item.ljust(41), "|")
-        for x in Ui.eventlog:
-            print("| ", Ui.eventlog.index(x), ": ", x.ljust(61), "|                                                |")
+                  ui.menu.index(item) + 1, ":", item.ljust(41), "|")
+        for x in ui.eventlog:
+            print("| ", ui.eventlog.index(x), ": ", x.ljust(61), "|                                                |")
         print("|_____________________________________________________________________|_____________________________"
               "___________________|\n|")
-        userinput = int(input("|    User Input: "))
-        Ui.mainmenuinput(self, userinput)
+
+        def inputattempt():
+            try:
+                userinput = int(input())
+                ui.mainmenuinput(userinput)
+            except ValueError:
+                ui.addevent("Invalid input! Please try again, enter a number in the menu.")
+        if static is True:
+            inputattempt()
 
 
 class Play(object):
@@ -206,7 +236,8 @@ class Play(object):
     def __init__(self):
         self.setup()
 
-    def setup(self):
+    @staticmethod
+    def setup():
         """Makes player adjust console size, to fit UI. """
         Player.stats['name'] = str(input("Type your name: "))
         print("\nYou will now need to adjust the console size to fit the game UI.\n"
@@ -216,41 +247,62 @@ class Play(object):
               "\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27"
               "\n28\n29\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         str(input())
-        return()
 
-    def intro(self):
+    @staticmethod
+    def intro():
         return ()
 
-    def story(self):
+    @staticmethod
+    def story():
         return ()
 
-    def escape(self):
+    @staticmethod
+    def escape():
         return ()
 
-    def failure(self):
+    @staticmethod
+    def failure():
         return ()
 
-    def changelocation(self, newloc):
-        location = main.data.locations.newloc
-        return location
+    @staticmethod
+    def changelocation(newloc):
+        return
 
 
 class Time:
-    """Contains all aspects of temporal travel
+    """Allows passage of time, as referenced through curstate.
 
-    :function timepass: progresses game time
+    :function timepass: progresses game time by input
+    :function daypass: progresses game day by input
     """
-    time = 6
-    day = 0
 
-    def timepass(self, timespent):
+    @staticmethod
+    def timepass(timespent):
         """
-        Progresses game time.
-
+        Progresses game time. Runs game checks for every tick.
+        Accesses curstate for current time.
         :param timespent: number of hours ('time') game progresses by
         """
-
+        curstate.Player.timeofday += timespent
         return()
 
-    def daypass(self, daysspent):
+    @staticmethod
+    def daypass(daysspent):
+        curstate.Player.day += daysspent
         return()
+
+
+print("Initialising...")
+survival = Survival()
+construction = Construction()
+action = Action()
+ui = Ui()
+play = Play()
+timeClass = Time()
+print("Load previous game?(yes/no)")
+if str(input()) == 'yes':
+    print("Loading game...")
+    curstate = main.savedstate
+else:
+    curstate = main.character
+ui.printui(True)
