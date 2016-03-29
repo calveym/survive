@@ -1,9 +1,18 @@
 import time
 import random
 from main.character import Player
+import main
 
-location = 'Pine Forest'
+location = {'name': '', 'difficulty': 0}
 
+
+def init():
+    print("Load previous game?(yes/no)")
+    if str(input()) == 'yes':
+        print("Loading game...")
+        main.curstate = main.savedstate
+    else:
+        main.curstate = main.character
 
 class Survival:
     """TODO: add base logic"""
@@ -12,11 +21,21 @@ class Survival:
         """
         Increases food randomly.
         """
-
+        Ui.addevent(self, 'You go out in search of food.')
+        time.sleep(1)
+        Ui.printui(self)
+        Ui.addevent('.')
+        time.sleep(1)
+        chance = random.randint(0, 3) - (int(location['difficulty']))
+        Ui.addevent('Success!')
     def eat(self):
         """
 
         """
+        Ui.addevent(self, 'You eat a scrap of food.')
+        time.sleep(1)
+        Ui.printui(self)
+
         return()
 
     def drink(self):
@@ -163,7 +182,7 @@ class Ui:
         """Prints out user interface, with all necessary information and interactions."""
         print("____________________________________________________________________________________________________"
               "___________________")
-        print("|Location: ", location.ljust(27), "|  Time : ", str(Time.time).ljust(15), "Health : ",
+        print("|Location: ", location['name'].ljust(27), "|  Time : ", str(Time.time).ljust(15), "Health : ",
               str(Player.stats['health']).ljust(15), "Water : ", str(Player.inventory['water']).ljust(16), "|")
         print("|                                       |  Day  : ", str(Time.day).ljust(15), "Money  : ",
               str(Player.inventory['money']).ljust(15), "Food  : ", str(Player.inventory['food']).ljust(16), "|")
@@ -183,6 +202,9 @@ class Ui:
 
 
 class Play(object):
+
+    def __init__(self):
+        self.setup()
 
     def setup(self):
         """Makes player adjust console size, to fit UI. """
@@ -208,6 +230,10 @@ class Play(object):
     def failure(self):
         return ()
 
+    def changelocation(self, newloc):
+        location = main.data.locations.newloc
+        return location
+
 
 class Time:
     """Contains all aspects of temporal travel
@@ -228,6 +254,3 @@ class Time:
 
     def daypass(self, daysspent):
         return()
-
-
-Ui.printui(1)
