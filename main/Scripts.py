@@ -34,6 +34,7 @@ class Survival:
         ui.addevent('You eat a scrap of food.')
         curstate.Player.inventory['food'] -= 1
         time.sleep(1)
+        if random.randint(0, 5) >=
         ui.printui(True)
 
     @staticmethod
@@ -41,7 +42,7 @@ class Survival:
         """
         reduces water by 1, replenishes 5 health
         """
-
+        ui.addevent('You take a sip of water')
     @staticmethod
     def fire():
         return()
